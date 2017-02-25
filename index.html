@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="theme-color" content="#ffffff">
+
+    <title>Chord Library — Guitarchords.nl</title>
+
+    
+    
+    <link href='https://fonts.googleapis.com/css?family=Montserrat:300,400' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+    <!-- al ejecutar wiredep genera ../ de más, no pasa nada porque es la raíz -->
+    <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/videojs/dist/video-js/video-js.css" />
+    <link rel="stylesheet" href="bower_components/flat-ui/dist/css/flat-ui.css" />
+    <!-- endbower -->
+    <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="bower_components/select2/dist/css/select2.min.css" />
+    <link rel="stylesheet" href="css/backtotop.css">
+    
+    <!-- Custom styles for this template -->
+    <link href="css/mystyles.css" rel="stylesheet">
+
+  </head>
+
+  <body>
+    <!-- bower:js -->
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/select2/dist/js/select2.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="bower_components/videojs/dist/video-js/video.js"></script>
+    <script src="bower_components/flat-ui/dist/js/flat-ui.js"></script>
+    <!-- endbower -->
+    <script src="scripts/chartmaker.js"></script>
+    <script src="scripts/backtotop.js"></script>
+    <script src="scripts/selecttext.js"></script>
+    <script src="scripts/action.js"></script>
+
+
+          <!-- <div class="ad_pd"> --> 
+          <!--     <a href="https://bookgoodies.com/a/B01N4WT9UK"> -->
+          <!--         <span class="title_pd" >Pensamiento divergente</span><br /> -->
+          <!--         <span class="subtitle_pd" > (Spanish Edition)</span> -->
+          <!--     <a/> -->
+          <!-- </div> -->
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/"><span style="color: #03a9f4"><i class="fa fa-music" aria-hidden="true"></i></span>&nbsp;&nbsp;Guitarchords<span style="color: #03a9f4">.nl</span></a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li id="nav-library" class="active"><a href="/"><i class="fa fa-university" aria-hidden="true"></i> Chord Library</a></li>
+            <li id="nav-scales"><a href="scales.html"><i class="fa fa-braille" aria-hidden="true"></i> Chords by scale</a></li>
+            <li id="nav-generator"><a href="generator.html"><i class="fa fa-file-text-o" aria-hidden="true"></i> Sheet generator</a></li>
+            <!-- <li><a href="#about">Song sheets</a></li> -->
+            <!-- <li><a href="#contact">Contact</a></li> -->
+            <!--
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li role="separator" class="divider"></li>
+                <li class="dropdown-header">Nav header</li>
+                <li><a href="#">Separated link</a></li>
+                <li><a href="#">One more separated link</a></li>
+              </ul>
+            </li>
+            -->
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+<script src="scripts/action_library.js"></script>
+
+<div class="container theme-showcase" role="main">
+    <main>
+    
+      <h1>Chord Library</h1>
+    
+    
+<ul class="nav nav-tabs">
+  <li data-layer="1" role="presentation" class="active"><a href="#">Moveable chords</a></li>
+  <li data-layer="2" role="presentation"><a href="#">Open chords</a></li>
+</ul>
+<br />
+
+<div id="layer-tab1" class="layer-tab">
+
+        <div class="form-group">
+            <label for="select-key-moveable">Select a chord key: </label>
+            <select id="select-key-moveable" class='form-control select select-primary mrs mbm input-sm'>
+                <option value="C" selected="selected">C</option>
+                <option value="D♭">D♭</option>
+                <option value="D">D</option>
+                <option value="E♭">E♭</option>
+                <option value="E">E</option>
+                <option value="F">F</option>
+                <option value="F♯">F♯</option>
+                <option value="G♭">G♭</option>
+                <option value="G">G</option>
+                <option value="A♭">A♭</option>
+                <option value="A">A</option>
+                <option value="B♭">B♭</option>
+                <option value="B">B</option>
+            </select> 
+        </div>
+        
+    <div id="moveableChordsArea"> </div>
+</div>
+
+<div id="layer-tab2" class="layer-tab" style="display:none">
+      <div class="well">
+          <p id="key-anchors">Select a chord key: &nbsp;&nbsp;</p>
+      </div>
+
+      <div id="keyChordsArea"> </div>
+</div>
+
+    </main>
+<a href="#0" class="cd-top">Top</a>
+
+
+      <div class="col-md-12 ccommons">
+          <p class="text" style="text-align:right"><a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Licencia de Creative Commons" style="border-width:0; display:inline;" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a><br /><span class="ccby">jordihv at gmail.com</span><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons<br />Attribution-ShareAlike 4.0 International License</a>.</p>
+      </div>
+
+<script>
+  // analytics
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-92289505-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+    </div> <!-- /container -->
+  </body>
+</html>
+

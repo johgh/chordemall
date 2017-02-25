@@ -1,0 +1,115 @@
+<script src="scripts/action_scales.js"></script>
+
+<div class="container theme-showcase" role="main">
+    <main>
+    
+      <h1>Chords by scale</h1>
+    
+      <!-- <div class="well"> -->
+      <!--     <p>Select a major scale key for seeing all derived modes/scales. Then select a scale/mode clicking on the table to see its associated chords.</p> -->
+      <!-- </div> -->
+
+<!-- <ul class="nav nav-tabs"> -->
+  <!-- <li data-layer="1" role="presentation" class="active"><a href="#">Scales/modes</a></li> -->
+  <!-- <li data-layer="2" role="presentation"><a href="#">Key table</a></li> -->
+<!-- </ul> -->
+<!-- <br /> -->
+
+<div id="layer-tab1" class="layer-tab">
+    <div class="well">Select a major scale key (parent key) to see all derived scales. Also select the number of tones of the chords ('triad' by default).<br />Click on any scale to see details and its associated guitar chord voicings.</div>
+
+    <form class="form-inline" role="form">
+        
+        <div class="form-group">
+            <label for="select-key">Major scale key</label>
+            <select id="select-key" class='form-control select select-primary mrs mbm'>
+                <option value="C" selected="selected">C</option>
+                <option value="D♭">D♭</option>
+                <option value="D">D</option>
+                <option value="E♭">E♭</option>
+                <option value="E">E</option>
+                <option value="F">F</option>
+                <option value="F♯">F♯</option>
+                <option value="G♭">G♭</option>
+                <option value="G">G</option>
+                <option value="A♭">A♭</option>
+                <option value="A">A</option>
+                <option value="B♭">B♭</option>
+                <option value="B">B</option>
+            </select> 
+        </div>
+        <div class="form-group">
+            <label for="select-triad">Number of tones</label>
+            <select id="select-triad" class='form-control select select-primary mrs mbm'>
+                <option value="triad">Triad</option>
+                <option value="seventh">Quadad (seventh)</option>
+            </select> 
+        </div>
+    </form>
+
+</div>
+
+
+<div id="layer-tab2" class="layer-tab" style="display:none">
+    <!-- hacer transposing table seleccionando modo de forma que se iluminen las notas según el modo y abajo salgan los chord funcion /may/min -->
+    <!-- al hacer click sobre una nota puede llevar al acorde que corresponde porque tenemos key y modo (se podría pedir triad tb) -->
+    <div class="alert alert-info" role="alert">Select mode</strong>.</div>
+        
+    <form class="form-inline" role="form">
+        
+        <div class="form-group">
+            <label for="select-key">Key</label>
+            <select id="select-key" class='form-control select select-primary mrs mbm'>
+                <option value="*">All keys</option>
+                <option value="C" selected="selected">C</option>
+                <option value="Db">Db</option>
+                <option value="D">D</option>
+                <option value="Eb">Eb</option>
+                <option value="E">E</option>
+                <option value="F">F</option>
+                <option value="F#">F#</option>
+                <option value="Gb">Gb</option>
+                <option value="G">G</option>
+                <option value="Ab">Ab</option>
+                <option value="A">A</option>
+                <option value="Bb">Bb</option>
+                <option value="B">B</option>
+            </select> 
+        </div>
+        <div class="form-group">
+            <label for="select-triad">Number of tones</label>
+            <select id="select-triad" class='form-control select select-primary mrs mbm'>
+                <option value="triad">Triad</option>
+                <option value="seventh">Quadad (seventh)</option>
+            </select> 
+        </div>
+    </form>
+</div>
+<table class="table table-responsive table-hover table-xs">
+    
+  <!-- <colgroup> -->
+  <!--   <col class="grey" /> -->
+  <!--   <col class="red" span="3" /> -->
+  <!--   <col class="blue" /> -->
+  <!-- </colgroup> -->
+    
+  <thead>
+        <tr><td colspan="25">&nbsp;</td></tr>
+        <tr class="triads chordfunctions"></tr>
+        <tr style="display:none" class="seventh chordfunctions"></tr>
+    </thead>
+    <tbody>
+        <tr class="triads chordfunctions"></tr>
+        <tr style="display:none" class="seventh chordfunctions"></tr>
+    </tbody>
+    <tfoot>
+        <tr class="triads chordfunctions"></tr>
+        <tr style="display:none" class="seventh chordfunctions"></tr>
+        <tr><td colspan="25">&nbsp;</td></tr>
+    </tfoot>
+</table>
+
+<div class="col-md-6" id="detailsArea" style="display:none"> </div>
+<div class="col-md-5" id="voicingsArea" style="display:none"> </div>
+
+</main>

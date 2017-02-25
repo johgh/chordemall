@@ -1,0 +1,26 @@
+{
+  "name": "chordsheets",
+  "version": "1.0.0",
+  "description": "chordshets",
+  "main": "index.js",
+  "dependencies": {
+    "jquery": "^3.1.1",
+    "wiredep": "^4.0.0"
+  },
+  "devDependencies": {
+    "grunt-wiredep": "^3.0.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/johgh/chordsheets.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/johgh/chordsheets/issues"
+  },
+  "homepage": "https://github.com/johgh/chordsheets#readme"
+}

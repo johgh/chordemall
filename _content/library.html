@@ -1,0 +1,47 @@
+<script src="scripts/action_library.js"></script>
+
+<div class="container theme-showcase" role="main">
+    <main>
+    
+      <h1>Chord Library</h1>
+    
+    
+<ul class="nav nav-tabs">
+  <li data-layer="1" role="presentation" class="active"><a href="#">Moveable chords</a></li>
+  <li data-layer="2" role="presentation"><a href="#">Open chords</a></li>
+</ul>
+<br />
+
+<div id="layer-tab1" class="layer-tab">
+
+        <div class="form-group">
+            <label for="select-key-moveable">Select a chord key: </label>
+            <select id="select-key-moveable" class='form-control select select-primary mrs mbm input-sm'>
+                <option value="C" selected="selected">C</option>
+                <option value="D♭">D♭</option>
+                <option value="D">D</option>
+                <option value="E♭">E♭</option>
+                <option value="E">E</option>
+                <option value="F">F</option>
+                <option value="F♯">F♯</option>
+                <option value="G♭">G♭</option>
+                <option value="G">G</option>
+                <option value="A♭">A♭</option>
+                <option value="A">A</option>
+                <option value="B♭">B♭</option>
+                <option value="B">B</option>
+            </select> 
+        </div>
+        
+    <div id="moveableChordsArea"> </div>
+</div>
+
+<div id="layer-tab2" class="layer-tab" style="display:none">
+      <div class="well">
+          <p id="key-anchors">Select a chord key: &nbsp;&nbsp;</p>
+      </div>
+
+      <div id="keyChordsArea"> </div>
+</div>
+
+    </main>

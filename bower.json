@@ -1,0 +1,25 @@
+{
+  "name": "chordsheets",
+  "description": "chordshets",
+  "main": "index.js",
+  "authors": [
+    "Jorge Hervás Vigueras <jordihv@gmail.com>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/johgh/chordsheets",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^3.1.1",
+    "select2": "^4.0.3",
+    "bootstrap": "^3.3.4",
+    "flat-ui": "^2.3.0",
+    "font-awesome": "^4.7.0"
+  }
+}

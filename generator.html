@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="theme-color" content="#ffffff">
+
+    <title>Sheet generator — Guitarchords.nl</title>
+
+    
+    
+    <link href='https://fonts.googleapis.com/css?family=Montserrat:300,400' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+    <!-- al ejecutar wiredep genera ../ de más, no pasa nada porque es la raíz -->
+    <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/videojs/dist/video-js/video-js.css" />
+    <link rel="stylesheet" href="bower_components/flat-ui/dist/css/flat-ui.css" />
+    <!-- endbower -->
+    <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="bower_components/select2/dist/css/select2.min.css" />
+    <link rel="stylesheet" href="css/backtotop.css">
+    
+    <!-- Custom styles for this template -->
+    <link href="css/mystyles.css" rel="stylesheet">
+
+  </head>
+
+  <body>
+    <!-- bower:js -->
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/select2/dist/js/select2.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="bower_components/videojs/dist/video-js/video.js"></script>
+    <script src="bower_components/flat-ui/dist/js/flat-ui.js"></script>
+    <!-- endbower -->
+    <script src="scripts/chartmaker.js"></script>
+    <script src="scripts/backtotop.js"></script>
+    <script src="scripts/selecttext.js"></script>
+    <script src="scripts/action.js"></script>
+
+
+          <!-- <div class="ad_pd"> --> 
+          <!--     <a href="https://bookgoodies.com/a/B01N4WT9UK"> -->
+          <!--         <span class="title_pd" >Pensamiento divergente</span><br /> -->
+          <!--         <span class="subtitle_pd" > (Spanish Edition)</span> -->
+          <!--     <a/> -->
+          <!-- </div> -->
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/"><span style="color: #03a9f4"><i class="fa fa-music" aria-hidden="true"></i></span>&nbsp;&nbsp;Guitarchords<span style="color: #03a9f4">.nl</span></a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li id="nav-library" class="active"><a href="/"><i class="fa fa-university" aria-hidden="true"></i> Chord Library</a></li>
+            <li id="nav-scales"><a href="scales.html"><i class="fa fa-braille" aria-hidden="true"></i> Chords by scale</a></li>
+            <li id="nav-generator"><a href="generator.html"><i class="fa fa-file-text-o" aria-hidden="true"></i> Sheet generator</a></li>
+            <!-- <li><a href="#about">Song sheets</a></li> -->
+            <!-- <li><a href="#contact">Contact</a></li> -->
+            <!--
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li role="separator" class="divider"></li>
+                <li class="dropdown-header">Nav header</li>
+                <li><a href="#">Separated link</a></li>
+                <li><a href="#">One more separated link</a></li>
+              </ul>
+            </li>
+            -->
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+<script src="scripts/action_generator.js"></script>
+
+<div class="container theme-showcase" role="main">
+    <main>
+    
+      <h1>Sheet generator</h1>
+    
+      <div class="well">
+          <p>Generate your own chord sheet with some chords you want to learn or the chords of a certain chord progression.<br />Print your sheet or save an url to share or to continue adding chords later.</p>
+      </div>
+
+<ul class="nav nav-tabs">
+  <li data-layer="1" role="presentation" class="active"><a href="#">Chord library</a></li>
+  <li data-layer="2" role="presentation"><a href="#">Custom chord voicings</a></li>
+</ul>
+<br />
+
+<div id="layer-tab1" class="layer-tab">
+    <div class="alert alert-info" role="alert">Filter the chords by <strong>key</strong>, <strong>type</strong> and <strong>bass note</strong>.</div>
+
+    <form class="form-inline" role="form">
+        
+    <div class="form-group">
+    <label for="select-key">Key</label>
+    <select id="select-key" class='form-control select select-primary mrs mbm'>
+        <option value="*">All keys</option>
+        <option value="C" selected="selected">C</option>
+        <option value="D♭">D♭</option>
+        <option value="D">D</option>
+        <option value="E♭">E♭</option>
+        <option value="E">E</option>
+        <option value="F">F</option>
+        <option value="F♯">F♯</option>
+        <option value="G♭">G♭</option>
+        <option value="G">G</option>
+        <option value="A♭">A♭</option>
+        <option value="A">A</option>
+        <option value="B♭">B♭</option>
+        <option value="B">B</option>
+    </select> 
+    </div>
+    <div class="form-group">
+    <label for="select-type">Type</label>
+    <select id="select-type" class='form-control select select-primary mrs mbm'>
+        <option value="*">All types</option>
+        <optgroup label="— Major —">
+            <option value="">Major</option>
+            <option value="Δ7">Major seventh</option>
+            <option value="6">Major sixth</option>
+            <option value="5">Fifth</option>
+            <option value="Δ9">Major 9</option>
+            <option value="add9">Add-nine</option>
+            <option value="6/9">Six-nine</option>
+            <option value="Δ13">Major thirteenth</option>
+        </optgroup>
+        <optgroup label="— Minor —">
+            <option value="min">Minor</option>
+            <option value="min7">Minor seventh</option>
+            <option value="mΔ7">Minor-major seventh</option>
+            <option value="min6">Minor sixth</option>
+            <option value="min9">Minor 9</option>
+            <option value="m6/9">Minor six-nine</option>
+            <option value="m11">Minor eleventh</option>
+            <option value="m13">Minor thirteenth</option>
+        </optgroup>
+        <optgroup label="— Suspended —">
+            <option value="sus2">Suspended second</option>
+            <option value="sus4">Suspended fourth</option>
+            <option value="7sus">Suspended fourth seventh</option>
+        </optgroup>
+        <optgroup label="— Dominant —">
+            <option value="7">Dominant seventh</option>
+            <option value="7♯5">Seven-sharp-five (aug7)</option>
+            <option value="Δ7♭5">Seven-flat-nine</option>
+            <option value="m7♭5">Minor seven-flat-five (half diminished)</option>
+            <option value="7♭5">Seven-flat-five</option>
+            <option value="7♭9">Seven-flat-nine</option>
+            <option value="7♯9">Seven-sharp-nine</option>
+            <option value="9">Dominant 9</option>
+            <option value="11">Dominant eleventh</option>
+            <option value="13">Dominant thirteenth</option>
+        </optgroup>
+        <optgroup label="— Augmented/Diminished —">
+            <option value="aug">Augmented</option>
+            <option value="dim">Diminished</option>
+            <option value="dim7">Diminished seventh</option>
+        </optgroup>
+    </select> 
+    </div>
+    <div class="form-group">
+    <label for="select-bass-note">Bass</label>
+    <select id="select-bass-note" class='form-control select select-primary mrs mbm'>
+        <option value="0" selected="selected">-</option>
+        <option value="1">major third (1st inversion)</option>
+        <option value="2">perfect fifth (2nd inversion)</option>
+        <option value="3">major seventh (3rd inversion)</option>
+    </select> 
+    </div>
+    <br />
+    <br />
+
+
+    
+    </form>
+
+</div>
+
+
+<div id="layer-tab2" class="layer-tab" style="display:none">
+    <div class="alert alert-info" role="alert">Select <strong>key</strong>/<strong>type</strong>/<strong>bass</strong> to generate a <strong>chord name</strong>.</div>
+        
+    <form class="form-inline" role="form">
+        
+    <div class="form-group">
+    <label for="select-key-custom">Key</label>
+    <select id="select-key-custom" class='form-control select select-primary mrs mbm'>
+        <option value="C" selected="selected">C</option>
+        <option value="D♭">D♭</option>
+        <option value="D">D</option>
+        <option value="E♭">E♭</option>
+        <option value="E">E</option>
+        <option value="F">F</option>
+        <option value="F♯">F♯</option>
+        <option value="G♭">G♭</option>
+        <option value="G">G</option>
+        <option value="A♭">A♭</option>
+        <option value="A">A</option>
+        <option value="B♭">B♭</option>
+        <option value="B">B</option>
+    </select> 
+    </div>
+    <div class="form-group">
+    <label for="select-type-custom">Type</label>
+    <select id="select-type-custom" class='form-control select select-primary mrs mbm'>
+        <optgroup label="— Major —">
+            <option value="">Major</option>
+            <option value="Δ7">Major seventh</option>
+            <option value="6">Major sixth</option>
+            <option value="5">Fifth</option>
+            <option value="Δ9">Major 9</option>
+            <option value="add9">Add-nine</option>
+            <option value="6/9">Six-nine</option>
+            <option value="Δ13">Major thirteenth</option>
+        </optgroup>
+        <optgroup label="— Minor —">
+            <option value="min">Minor</option>
+            <option value="min7">Minor seventh</option>
+            <option value="mΔ7">Minor-major seventh</option>
+            <option value="min6">Minor sixth</option>
+            <option value="min9">Minor 9</option>
+            <option value="m6/9">Minor six-nine</option>
+            <option value="m11">Minor eleventh</option>
+            <option value="m13">Minor thirteenth</option>
+        </optgroup>
+        <optgroup label="— Suspended —">
+            <option value="sus2">Suspended second</option>
+            <option value="sus4">Suspended fourth</option>
+            <option value="7sus">Suspended fourth seventh</option>
+        </optgroup>
+        <optgroup label="— Dominant —">
+            <option value="7">Dominant seventh</option>
+            <option value="7♯5">Seven-sharp-five (aug7)</option>
+            <option value="Δ7♭5">Seven-flat-nine</option>
+            <option value="m7♭5">Minor seven-flat-five (half diminished)</option>
+            <option value="7♭5">Seven-flat-five</option>
+            <option value="7♭9">Seven-flat-nine</option>
+            <option value="7♯9">Seven-sharp-nine</option>
+            <option value="9">Dominant 9</option>
+            <option value="11">Dominant eleventh</option>
+            <option value="13">Dominant thirteenth</option>
+        </optgroup>
+        <optgroup label="— Augmented/Diminished —">
+            <option value="aug">Augmented</option>
+            <option value="dim">Diminished</option>
+            <option value="dim7">Diminished seventh</option>
+        </optgroup>
+    </select> 
+    </div>
+    <div class="form-group">
+    <label for="select-bass-note-custom">Bass</label>
+    <select id="select-bass-note-custom" class='form-control select select-primary mrs mbm'>
+        <option value="0" selected="selected">-</option>
+        <option value="1">3 (1st inversion)</option>
+        <option value="2">5 (2nd inversion)</option>
+        <option value="3">7 (3rd inversion)</option>
+    </select> 
+    </div>
+    <br />
+    <br />
+    <div class="alert alert-info" role="alert">Enter the <strong>fret positions</strong> ('0' = open string; 'x' or empty = muted string). Optionally, enter the <strong>fingers used</strong> (1=index; 2=middle; 3=ring; 4=pinky).</div>
+    <br />
+    <div class="customblock">
+            Fret position&nbsp;&nbsp;
+            <input type="text" maxlength="2" class="ifret form-control input-xs" id="pE" placeholder="E string" />
+            <input type="text" maxlength="2" class="ifret form-control input-xs" id="pA" placeholder="A string" />
+            <input type="text" maxlength="2" class="ifret form-control input-xs" id="pD" placeholder="D string" />
+            <input type="text" maxlength="2" class="ifret form-control input-xs" id="pG" placeholder="G string" />
+            <input type="text" maxlength="2" class="ifret form-control input-xs" id="pB" placeholder="B string" />
+            <input type="text" maxlength="2" class="ifret form-control input-xs" id="pe" placeholder="e string" />
+            <br />
+            Finger used  &nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="text" class="ifing form-control input-xs" id="fE" maxlength="1" placeholder="E string" />
+            <input type="text" class="ifing form-control input-xs" id="fA" maxlength="1" placeholder="A string" />
+            <input type="text" class="ifing form-control input-xs" id="fA" maxlength="1" placeholder="D string" />
+            <input type="text" class="ifing form-control input-xs" id="fG" maxlength="1" placeholder="G string" />
+            <input type="text" class="ifing form-control input-xs" id="fB" maxlength="1" placeholder="B string" />
+            <input type="text" class="ifing form-control input-xs" id="fe" maxlength="1" placeholder="e string" />
+    <br />
+    <br />
+    </div>
+    </form>
+</div>
+
+<div id="previewArea" class="generator"> </div>
+
+<div id="addAllChords">
+    <br />
+    <div class="alert alert-info" role="alert"><button type="button" id="button-clone" class="btn btn-primary">Add to sheet all displayed chords </button> or add specific chords by clicking on the <strong>chords above</strong>.</div>
+</div>
+
+<br />
+<div id="chordsheet" style="display:none">
+    <div id="printArea" class="generator">
+        <input id="titleinput" type="text" value="<Your sheet title here>"></input>
+    </div>
+    <br />
+    <br />
+    <div class="alert alert-info" role="alert">
+        <button type="button" id="button-print" class="btn btn-primary">
+            Print chord sheet
+        </button> or
+        <a id="sharelink" href=""><strong>save this sheet for later </strong></a>(right click and select "Copy link" or similar).
+    </div>
+</div>
+
+
+
+</main>
+<a href="#0" class="cd-top">Top</a>
+
+
+      <div class="col-md-12 ccommons">
+          <p class="text" style="text-align:right"><a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Licencia de Creative Commons" style="border-width:0; display:inline;" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a><br /><span class="ccby">jordihv at gmail.com</span><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons<br />Attribution-ShareAlike 4.0 International License</a>.</p>
+      </div>
+
+<script>
+  // analytics
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-92289505-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+    </div> <!-- /container -->
+  </body>
+</html>
+

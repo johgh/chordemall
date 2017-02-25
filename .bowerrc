@@ -1,0 +1,5 @@
+{
+  "scripts": {
+    "postinstall": "wiredep -s _includes/header.html"
+  }
+}
