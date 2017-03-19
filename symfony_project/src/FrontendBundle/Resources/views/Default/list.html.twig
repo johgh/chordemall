@@ -1,0 +1,18 @@
+<div id="tasksmsg"></div>
+
+<div id="taskslist">
+
+    {% if jobs is defined %}
+            <ul>
+                {% for job in jobs %}
+                    <li>
+                        {{ job }}
+                    </li>
+
+                {% endfor %}
+            </ul>
+    {% else %}
+            No hay ninguna tarea creada
+    {% endif %}
+
+</div>

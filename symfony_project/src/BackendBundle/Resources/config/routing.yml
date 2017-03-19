@@ -1,0 +1,11 @@
+backend_homepage:
+    path:     /
+    defaults: { _controller: BackendBundle:Default:index }
+
+backend_jobs:
+    path:     /jobs
+    defaults: { _controller: BackendBundle:Default:index }
+
+backend_create:
+    path:     /create-job
+    defaults: { _controller: BackendBundle:Default:createJob}

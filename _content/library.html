@@ -9,6 +9,7 @@
 <ul class="nav nav-tabs">
   <li data-layer="1" role="presentation" class="active"><a href="#">Moveable chords</a></li>
   <li data-layer="2" role="presentation"><a href="#">Open chords</a></li>
+  <li data-layer="3" role="presentation"><a href="#">Submit chord</a></li>
 </ul>
 <br />
 
@@ -43,5 +44,27 @@
 
       <div id="keyChordsArea"> </div>
 </div>
+
+<div id="layer-tab3" class="layer-tab" style="display:none">
+    <section_custom>
+    
+    <div id="customChordsArea"> </div>
+    
+    <!-- <div class="alert alert-info" role="alert"><button type="button" id="button-submit" class="btn btn-primary">Submit this chord</button></div> -->
+    
+    
+<form action="https://formspree.io/jordihv@gmail.com"
+      method="POST">
+    <input id="customchord" type="hidden" name="customchord">
+    <!-- <input type="email" name="_replyto"> -->
+    <input type="hidden" name="_format" value="plain" />
+    <input type="hidden" name="_subject" value="[Guitarchords.nl] New chord submission!" />
+    <input type="submit" class="btn btn-primary" value="Submit this chord">
+</form>
+
+    
+    
+</div>
+
 
     </main>

@@ -12,5 +12,12 @@ do
         $root_path/_includes/footer.html | sed "s/<section_title>/$title/g" > $root_path/$var
 done
 
+cd $root_path/_includes
+
+# custom.html includes
+sed -e '/<section_custom>/ {' -e 'r custom.html' -e 'd' -e '}' -i $root_path/generator.html
+sed -e '/<section_custom>/ {' -e 'r custom.html' -e 'd' -e '}' -i $root_path/library.html
+
+# library is the index
 mv $root_path/library.html $root_path/index.html
 

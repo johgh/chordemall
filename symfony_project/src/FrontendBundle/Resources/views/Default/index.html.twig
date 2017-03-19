@@ -1,0 +1,67 @@
+{{ include ('FrontendBundle:Default:list.html.twig', {jobs: jobs}) }}
+
+{{ form_start(form, {'attr': {'id': 'addtask_form'}}) }}
+{{ form_widget(form) }}
+{{ form_end(form) }}
+
+<script>
+    var baseUrl = '{{  app.request.getBaseURL() }}';
+
+    function createJob(jobName) {
+        console.log(jobName);
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 201) {
+                sessionStorage[jobName] = jobName;
+                getFrontListView();
+            }
+            document.getElementById("tasksmsg").innerHTML = this.responseText;
+
+        }
+        xhttp.open("POST", baseUrl + "/back/create-job", true);
+        xhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        xhttp.send('name=' + jobName);
+    }
+
+    function getFrontListView() {
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById("taskslist").innerHTML = this.response;
+            }
+        }
+        xhttp.open("POST", baseUrl + "/front/list", true);
+        xhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        xhttp.send('jobs=' + JSON.stringify(sessionStorage));
+
+    }
+
+    function updateSessionStorage(jobsJson) {
+        sessionStorage.clear();
+        var parsed = JSON.parse(jobsJson);
+        for (i in parsed)
+        {
+            sessionStorage[i] = parsed[i].name;
+        }
+    }
+
+    // form submission
+    document.getElementById("addtask_form").addEventListener("submit", function(e){
+        jobName = document.getElementById("form_name").value;
+        createJob(jobName);
+        e.preventDefault();
+    });
+
+    window.onload = function() {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    updateSessionStorage(this.responseText);
+                    getFrontListView();
+                }
+            };
+            xhttp.open("GET", baseUrl + "/back/jobs", true);
+            xhttp.send();
+    };
+
+</script>

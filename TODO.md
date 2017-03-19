@@ -20,7 +20,6 @@ sección acordes abiertos:
 
 
 ### posibilidades
-- de momento no: pensar si tiene sentido añadir formulario con https://formspree.io/ para que los usuarios añadan sus acordes, en un value modificado mandaría el objeto javascript q me llegaría al mail (ya únicamente para mi serviría)
 - añadir subtabla non-related major scales en la que no salgan los grados ni los acordes (solamente para comparar con lo de arriba)
 - api + generador de imagen jpg/png a partir del svg?
 - falta enlace a teoría acordes? se puede añadir al popover cuando tenga sección..

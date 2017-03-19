@@ -15,10 +15,22 @@ $(function(){
         if ($(this).data('layer') == 1) {
             loadMoveableChords();
         } else {
-            loadAllChords();
+            if ($(this).data('layer') == 2) {
+                loadAllChords();
+            } else {
+                loadCustomChord('library');
+            }
         }
-        
     });
+    
+    $('#select-key-custom, #select-type-custom, #select-bass-note-custom').change(function() {
+        loadCustomChord('customChordsArea');
+    });
+    
+    $('.ifing, .ifret').change(function() {
+        loadCustomChord('customChordsArea');
+    });
+    
     
     $('#select-key-moveable').change(function() {
         loadMoveableChords();

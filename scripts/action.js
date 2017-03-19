@@ -31,7 +31,7 @@
     
     
     /* included all different keys, but not theoretical (D♯ E♯  F♭  G♯  A♯  B♯ C♭ C♯)*/
-    keytones = {'C': '0', 'D♭': '8', 'D': '2', 'E♭': '3', 'E': '4', 'F': '5', 'F♯': '6', 'G♭': '6', 'G': '7', 'A♭': '8', 'A': '9', 'B♭': '10', 'B': '11'};
+    keytones = {'C': '0', 'D♭': '1', 'D': '2', 'E♭': '3', 'E': '4', 'F': '5', 'F♯': '6', 'G♭': '6', 'G': '7', 'A♭': '8', 'A': '9', 'B♭': '10', 'B': '11'};
     // with theoretical keytones:
     // keytones = {'C': '0', 'C♯': '1', 'D♭': '1', 'D': '2', 'D♯': '3', 'E♭': '3', 'E': '4', 'F': '5', 'F♯': '6', 'G♭': '6', 'G': '7', 'G♯': '8', 'A♭': '8', 'A': '9', 'A♯': '10', 'B♭': '10', 'B': '11'};
     
@@ -138,6 +138,7 @@
         { key: "0", form: "Δ7", fret: "x 3 2 4 0 1", fing: "x 3 2 4 1 x"},
         { key: '0', form: 'maj6', fret: 'x 3 2 2 1 x', fing: '' },
         { key: '0', form: 'min6', fret: '8 x 7 8 8 x', fing: '' },
+        {"key":"0","form":"add9","fret":"x 3 2 0 3 0","fing":" ","inv":"0"},
         /* D ****************************************************/
         { key: '2', form: 'min7', fret: 'x 3 x 2 3 1', fing: '', inv: '3' },
         { key: '2', form: 'maj6', fret: 'x x 0 2 0 2', fing: '' },
@@ -148,16 +149,22 @@
         { key: '4', form: "min7", fret: "0 2 2 0 3 0", fing: "x 1 2 x 4 x"},
         { key: '4', form: 'Δ7', fret: '0 2 1 1 0 0', fing: '' },
         /* F ****************************************************/
+        {"key":"5","form":"","fret":"x x 3 2 1 1","fing":" ","inv":"0"},
         /* G ****************************************************/
+        {"key":"7","form":"min","fret":"x x 0 3 3 3","fing":" ","inv":"0"},
         { key: '7', form: '7', fret: '3 2 0 0 0 1', fing: '' },
         { key: '7', form: '7', fret: '3 2 0 0 3 1', fing: '' },
         { key: '7', form: '7', fret: 'x 2 0 0 0 1', fing: '', inv: '1' },
         { key: '7', form: '7', fret: 'x 2 0 0 3 1', fing: '', inv: '1' },
+        {"key":"7","form":"add9","fret":"3 x 0 2 0 3","fing":" ","inv":"0"},
         /* A ****************************************************/
         { key: '9', form: 'maj6', fret: 'x 0 2 2 2 2', fing: 'x x 1 1 1 1' },
         { key: '9', form: 'sus4', fret: 'x 0 2 2 3 0', fing: '' },
         /* B ****************************************************/
         { key: '11', form: '7', fret: 'x 2 1 2 0 2', fing: '' },
+        
+        // {"key":"0","form":"min","fret":"x x 5 5 4 3","fing":" ","inv":"0"},
+        // {"mov":"E","form":"min7","fret":"x x 1 1 1 1","fing":"x x 1 1 1 1","inv":"0"},
     ]
 
 $(function(){
@@ -166,6 +173,9 @@ $(function(){
         $('li#nav-' + currentPage).addClass('active');
         $('li#nav-' + currentPage).siblings().removeClass('active');
     }
+    
+
+    
 
 });
 
@@ -225,15 +235,24 @@ $(function(){
         var extraData = {};
         var classMoveable = '';
         $.each(results, function(ind, result) {
-            // console.log(result);
+            formula = formulas[result.form].split(/[ ,]+/);
+            frets = result.fret.split(/[ ,]+/);
+            fingers = result.fing.split(/[ ,]+/);
+            
+            if (chordsTagId == 'customChordsArea') {
+                var mailInfo = {};
+                mailInfo.key = keytones[result.key];
+                mailInfo.form = result.form;
+                mailInfo.fret = frets.join(' ');
+                mailInfo.fing = fingers.join(' ');
+                mailInfo.inv = result.inv;
+                $('#customchord').val(JSON.stringify(mailInfo));
+            }
+            
             // if (typeof result === 'undefined' || ! result) {
             //     $('#previewArea').html('No chord available'); 
             //     return false;
             // }
-            
-            formula = formulas[result.form].split(/[ ,]+/);
-            frets = result.fret.split(/[ ,]+/);
-            fingers = result.fing.split(/[ ,]+/);
             
             // moveable chords calc new frets and fings
             if (typeof result.mov != 'undefined') {
@@ -375,4 +394,62 @@ $(function(){
             
             addChordUrl(id, result, result.key);
             });
+        
+        
+        
+    }
+
+    function loadCustomChord(fromLibrary = 'false') {
+        // chord data
+        var key=$('#select-key-custom').val();
+        var type=$('#select-type-custom').val();
+        var inv=$('#select-bass-note-custom').val();
+        
+        var arrfrets = [];
+        $('.ifret').each(function() {
+                arrfrets.push($(this).val());
+        });
+        
+        var arrfings = [];
+        $('.ifing').each(function() {
+                arrfings.push($(this).val());
+        });
+
+        customChords = validateChord(key, type, inv, arrfrets, arrfings);
+
+        console.log(customChords);
+        if (fromLibrary == 'false') {
+            $('#previewArea').html('');
+            loadChords(customChords);
+        } else {
+            $('#customChordsArea').html('');
+            loadChords(customChords, 'customChordsArea');
+        }
+        
+    }
+    
+    function validateChord(key, type, inv, fret, fing) {
+            var arrfrets = [];
+            $.each(fret, function( index, value ) {
+                if (isNumber(value) && value != '') {
+                    arrfrets.push(value);
+                } else {
+                    arrfrets.push('x');
+                }
+            });
+            
+            var arrfings = [];
+            $.each(fing, function( index, value ) {
+                if (isNumber(value) && value != '') {
+                    arrfings.push(value);
+                } else {
+                    arrfings.push('x');
+                }
+            });
+            
+        if (JSON.stringify(arrfings)==JSON.stringify(['x', 'x', 'x', 'x', 'x', 'x'])) {
+            arrfings = [' ', ' ', ' ', ' ', ' ', ' ']
+        }
+
+        return [{ key: key, form: type, fret: arrfrets.join(), fing: arrfings.join(), inv: inv}];
     }

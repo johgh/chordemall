@@ -26,12 +26,6 @@ $(function(){
         }
         
     });
-
-    $(document).on('click','input[type=text]',function(){ this.select(); });
-        
-    $('#select-key, #select-type, #select-bass-note').change(function() {
-        loadFilteredChords();
-    });
     
     $('#select-key-custom, #select-type-custom, #select-bass-note-custom').change(function() {
         loadCustomChord();
@@ -39,6 +33,12 @@ $(function(){
     
     $('.ifing, .ifret').change(function() {
         loadCustomChord();
+    });
+
+    $(document).on('click','input[type=text]',function(){ this.select(); });
+        
+    $('#select-key, #select-type, #select-bass-note').change(function() {
+        loadFilteredChords();
     });
     
     $('#button-clone').click(function() {
@@ -97,54 +97,6 @@ $(function(){
         // colapsar o hide de la parte de edición
     }
     
-    function loadCustomChord () {
-        // chord data
-        var key=$('#select-key-custom').val();
-        var type=$('#select-type-custom').val();
-        var inv=$('#select-bass-note-custom').val();
-        
-        var arrfrets = [];
-        $('.ifret').each(function() {
-                arrfrets.push($(this).val());
-        });
-        
-        var arrfings = [];
-        $('.ifing').each(function() {
-                arrfings.push($(this).val());
-        });
-
-        customChords = validateChord(key, type, inv, arrfrets, arrfings);
-
-        $('#previewArea').html('');
-        loadChords(customChords);
-        
-    }
-    
-    function validateChord(key, type, inv, fret, fing) {
-            var arrfrets = [];
-            $.each(fret, function( index, value ) {
-                if (isNumber(value) && value != '') {
-                    arrfrets.push(value);
-                } else {
-                    arrfrets.push('x');
-                }
-            });
-            
-            var arrfings = [];
-            $.each(fing, function( index, value ) {
-                if (isNumber(value) && value != '') {
-                    arrfings.push(value);
-                } else {
-                    arrfings.push('-');
-                }
-            });
-            
-        if (JSON.stringify(arrfings)==JSON.stringify(['-', '-', '-', '-', '-', '-'])) {
-            arrfings = [' ', ' ', ' ', ' ', ' ', ' ']
-        }
-
-        return [{ key: key, form: type, fret: arrfrets.join(), fing: arrfings.join(), inv: inv}];
-    }
     
     function parseUrl () {
         var parsedurl = window.location.search.split("&")[0].replace("?","").split("=")[1]

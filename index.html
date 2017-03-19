@@ -15,7 +15,7 @@
     <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
     <meta name="theme-color" content="#ffffff">
 
-    <title>Chord Library — Guitarchords.nl</title>
+    <title>Chord Library — Guitarchords.ga</title>
 
     
     
@@ -65,7 +65,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="/"><span style="color: #03a9f4"><i class="fa fa-music" aria-hidden="true"></i></span>&nbsp;&nbsp;Guitarchords<span style="color: #03a9f4">.nl</span></a>
+          <a class="navbar-brand" href="/"><span style="color: #03a9f4"><i class="fa fa-music" aria-hidden="true"></i></span>&nbsp;&nbsp;Guitarchords<span style="color: #03a9f4">.ga</span></a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
@@ -103,6 +103,7 @@
 <ul class="nav nav-tabs">
   <li data-layer="1" role="presentation" class="active"><a href="#">Moveable chords</a></li>
   <li data-layer="2" role="presentation"><a href="#">Open chords</a></li>
+  <li data-layer="3" role="presentation"><a href="#">Submit chord</a></li>
 </ul>
 <br />
 
@@ -137,6 +138,130 @@
 
       <div id="keyChordsArea"> </div>
 </div>
+
+<div id="layer-tab3" class="layer-tab" style="display:none">
+    <div class="alert alert-info" role="alert">Select <strong>key</strong>/<strong>type</strong>/<strong>bass</strong> to generate the <strong>chord name</strong>.</div>
+        
+    <form class="form-inline" role="form">
+        
+    <div class="form-group">
+    <label for="select-key-custom">Key</label>
+    <select id="select-key-custom" class='form-control select select-primary mrs mbm'>
+        <option value="C" selected="selected">C</option>
+        <option value="D♭">D♭</option>
+        <option value="D">D</option>
+        <option value="E♭">E♭</option>
+        <option value="E">E</option>
+        <option value="F">F</option>
+        <option value="F♯">F♯</option>
+        <option value="G♭">G♭</option>
+        <option value="G">G</option>
+        <option value="A♭">A♭</option>
+        <option value="A">A</option>
+        <option value="B♭">B♭</option>
+        <option value="B">B</option>
+    </select> 
+    </div>
+    <div class="form-group">
+    <label for="select-type-custom">Type</label>
+    <select id="select-type-custom" class='form-control select select-primary mrs mbm'>
+        <optgroup label="— Major —">
+            <option value="">Major</option>
+            <option value="Δ7">Major seventh</option>
+            <option value="6">Major sixth</option>
+            <option value="5">Fifth</option>
+            <option value="Δ9">Major 9</option>
+            <option value="add9">Add-nine</option>
+            <option value="6/9">Six-nine</option>
+            <option value="Δ13">Major thirteenth</option>
+        </optgroup>
+        <optgroup label="— Minor —">
+            <option value="min">Minor</option>
+            <option value="min7">Minor seventh</option>
+            <option value="mΔ7">Minor-major seventh</option>
+            <option value="min6">Minor sixth</option>
+            <option value="min9">Minor 9</option>
+            <option value="m6/9">Minor six-nine</option>
+            <option value="m11">Minor eleventh</option>
+            <option value="m13">Minor thirteenth</option>
+        </optgroup>
+        <optgroup label="— Suspended —">
+            <option value="sus2">Suspended second</option>
+            <option value="sus4">Suspended fourth</option>
+            <option value="7sus">Suspended fourth seventh</option>
+        </optgroup>
+        <optgroup label="— Dominant —">
+            <option value="7">Dominant seventh</option>
+            <option value="7♯5">Seven-sharp-five (aug7)</option>
+            <option value="Δ7♭5">Seven-flat-nine</option>
+            <option value="m7♭5">Minor seven-flat-five (half diminished)</option>
+            <option value="7♭5">Seven-flat-five</option>
+            <option value="7♭9">Seven-flat-nine</option>
+            <option value="7♯9">Seven-sharp-nine</option>
+            <option value="9">Dominant 9</option>
+            <option value="11">Dominant eleventh</option>
+            <option value="13">Dominant thirteenth</option>
+        </optgroup>
+        <optgroup label="— Augmented/Diminished —">
+            <option value="aug">Augmented</option>
+            <option value="dim">Diminished</option>
+            <option value="dim7">Diminished seventh</option>
+        </optgroup>
+    </select> 
+    </div>
+    <div class="form-group">
+    <label for="select-bass-note-custom">Bass</label>
+    <select id="select-bass-note-custom" class='form-control select select-primary mrs mbm'>
+        <option value="0" selected="selected">-</option>
+        <option value="1">3 (1st inversion)</option>
+        <option value="2">5 (2nd inversion)</option>
+        <option value="3">7 (3rd inversion)</option>
+    </select> 
+    </div>
+    <br />
+    <br />
+    <div class="alert alert-info" role="alert">Enter the <strong>fret positions</strong> ('0' = open string; 'x' or empty = muted string). Optionally, enter the <strong>fingers used</strong> (1=index; 2=middle; 3=ring; 4=pinky).</div>
+    <br />
+    <div class="customblock">
+            Fret position&nbsp;&nbsp;
+            <input type="text" maxlength="2" class="ifret form-control input-xs" id="pE" placeholder="E string" />
+            <input type="text" maxlength="2" class="ifret form-control input-xs" id="pA" placeholder="A string" />
+            <input type="text" maxlength="2" class="ifret form-control input-xs" id="pD" placeholder="D string" />
+            <input type="text" maxlength="2" class="ifret form-control input-xs" id="pG" placeholder="G string" />
+            <input type="text" maxlength="2" class="ifret form-control input-xs" id="pB" placeholder="B string" />
+            <input type="text" maxlength="2" class="ifret form-control input-xs" id="pe" placeholder="e string" />
+            <br />
+            Finger used  &nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="text" class="ifing form-control input-xs" id="fE" maxlength="1" placeholder="E string" />
+            <input type="text" class="ifing form-control input-xs" id="fA" maxlength="1" placeholder="A string" />
+            <input type="text" class="ifing form-control input-xs" id="fA" maxlength="1" placeholder="D string" />
+            <input type="text" class="ifing form-control input-xs" id="fG" maxlength="1" placeholder="G string" />
+            <input type="text" class="ifing form-control input-xs" id="fB" maxlength="1" placeholder="B string" />
+            <input type="text" class="ifing form-control input-xs" id="fe" maxlength="1" placeholder="e string" />
+    <br />
+    <br />
+    </div>
+    </form>
+
+    
+    <div id="customChordsArea"> </div>
+    
+    <!-- <div class="alert alert-info" role="alert"><button type="button" id="button-submit" class="btn btn-primary">Submit this chord</button></div> -->
+    
+    
+<form action="https://formspree.io/jordihv@gmail.com"
+      method="POST">
+    <input id="customchord" type="hidden" name="customchord">
+    <!-- <input type="email" name="_replyto"> -->
+    <input type="hidden" name="_format" value="plain" />
+    <input type="hidden" name="_subject" value="[Guitarchords.nl] New chord submission!" />
+    <input type="submit" class="btn btn-primary" value="Submit this chord">
+</form>
+
+    
+    
+</div>
+
 
     </main>
 <a href="#0" class="cd-top">Top</a>
